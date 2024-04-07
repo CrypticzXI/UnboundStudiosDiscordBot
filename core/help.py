@@ -46,11 +46,11 @@ DISPLAY_COG = (
 
 class GroupHelpPageSource(menus.ListPageSource):
     def __init__(
-        self,
-        group: commands.Group | Cog,
-        commands_list: list[commands.Command],
-        *,
-        prefix: str,
+            self,
+            group: commands.Group | Cog,
+            commands_list: list[commands.Command],
+            *,
+            prefix: str,
     ) -> None:
         super().__init__(entries=commands_list, per_page=6)
         self.group = group
@@ -167,12 +167,6 @@ class FrontPageSource(menus.PageSource):
         )
 
         embed.add_field(
-            name="Support Server",
-            value=f"For more help, consider joining the [official server]({self.bot.support_server})",
-            inline=False,
-        )
-
-        embed.add_field(
             name="Privacy Policy",
             value=f"For the privacy policy of the bot: visit [Privacy Policy]({PRIVACY_POLICY})",
             inline=False,
@@ -180,16 +174,7 @@ class FrontPageSource(menus.PageSource):
 
         created_at = discord.utils.format_dt(menu.ctx.bot.user.created_at, "F")
         if self.index == 0:
-            embed.add_field(
-                name="Who are you?",
-                value=(
-                    r"The bot made by `@ritik.ranjan` (ritik) formerly know as `!! Ritik Ranjan [*.*]#9230`. Built with love and `discord.py`! Bot been running since "
-                    f"{created_at}. Bot have features such as moderation, global-chat, and more. You can get more "
-                    "information on my commands by using the dropdown below.\n\n"
-                    f"Bot is also open source. You can see the code on [GitHub]({self.bot.github})!"
-                ),
-                inline=False,
-            )
+            pass
         elif self.index == 1:
             entries = (
                 ("<argument>", "This means the argument is __**required**__."),
